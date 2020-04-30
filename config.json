@@ -1,15 +1,15 @@
 {
   "psi": {
     "baseUrl": "https://data.psi-mis.org",
-    "username": "xxxxxx",
-    "password": "xxxxxx",
+    "username": "xxxxxxxx",
+    "password": "xxxxxxxx",
     "sinceDays": 90
   },
 
   "hmis": {
     "baseUrl": "https://hmis.gov.la",
     "username": "xxxxxxxx",
-    "password": "xxxxxxxx"
+    "password": "xxxxxxxxx"
   },
 
   "program": {
@@ -60,6 +60,10 @@
       "ACT 6x3": "ACT 6x3",
       "ACT 6x4": "ACT 6x4",
       "Combined blister": "ACT 6x4"
+    },
+    "RNuFZKhQJVF": {
+      "PQ7.5": "1",
+      "PQ15": "1"
     }
   },
 
@@ -73,6 +77,12 @@
       {
         "mapping": "CC9BpgSQbfh",
         "optionSet": "ZpV2Hs9EGnC"
+      }
+    ],
+    "SILdmAJi1gg": [
+      {
+	"mapping":"N2l2WBzG22o",
+	"optionSet":"RNuFZKhQJVF"
       }
     ],
     "FPNbkUi9D55": [
