@@ -134,12 +134,46 @@ const transform = (cases, orgs) => {
       customValues.forEach(d => {
         let dataValue = {};
         dataValue["dataElement"] = d.deId;
-        dataValue["value"] = d.value;
-        event.dataValues.push(dataValue);
+        if (d.deId === "iboStpxyG6j") { // MAL: Case outcome
+          let _treatment = c.dataValues.find(x => x.dataElement == `TzL693oH3D9`);
+          let _treatmentResult = c.dataValues.find(x => x.dataElement == `QRbMgIHc9QB`);
+
+          // destination optionSet https://hmis.gov.la/api/optionSets/Czn7rwBZvzS?format=json&fields=*,options[*]
+          console.log("treatment")
+          if (_treatment){
+            console.log(_treatment.value);
+          }else {
+            console.log(_treatment);
+          }
+          console.log("_treatmentResult")
+          if (_treatmentResult){
+            console.log(_treatmentResult.value);
+          }else {
+            console.log(_treatmentResult);
+          }
+
+          if (_treatment === undefined && _treatmentResult === undefined){
+            //no send
+          } else if ( (_treatment != undefined) && ((_treatmentResult === undefined) || _treatmentResult.value === "Gohome") ) {
+            dataValue["value"] = "Treated";
+            event.dataValues.push(dataValue);
+          } else if ( (_treatment === undefined) && (_treatmentResult.value === "Referred") ) {
+            dataValue["value"] = "Refer";
+            event.dataValues.push(dataValue);
+          } else if ( (_treatment != undefined) && (_treatmentResult.value === "Referred") ) {
+            dataValue["value"] = "Refer";
+            event.dataValues.push(dataValue);
+          }
+          console.log(dataValue["value"])
+          console.log("-----------------------------------------------------------")
+        } else {
+          dataValue["value"] = d.value;
+        }
       });
     }
 
     // MAL - Type of Surveillance data elements
+    // https://hmis.gov.la/api/dataElements/PUPinvzteXW
     event.dataValues.push({
       dataElement: "PUPinvzteXW",
       value: orgsCode["level"] === 5 ? "ACD" : "PCD"
@@ -152,7 +186,7 @@ const transform = (cases, orgs) => {
       let status = c["dataValues"].find(x => x.dataElement == `MLbNyweMihi`);
       status["value"] = "Rejected";
       c["dataValues"].push({
-        dataElement: "hjSIBxruyJA",
+        dataElement: "hjSIBxruyJA", // origin_de_uid: LA - Sync error message https://data.psi-mis.org/api/dataElements/hjSIBxruyJA
         value: "District Code PPM doesn't exist"
       });
     }
@@ -189,7 +223,7 @@ const updateStatus = async (res, data) => {
       });
     } else {
       event.dataValues.push({
-        dataElement: "hjSIBxruyJA",
+        dataElement: "hjSIBxruyJA", // origin_de_uid: LA - Sync error message https://data.psi-mis.org/api/dataElements/hjSIBxruyJA
         value: re.description
       });
     }
@@ -212,6 +246,8 @@ const updateStatus = async (res, data) => {
 };
 
 const pushData = async data => {
+  console.log("Sending data")
+  console.log(JSON.stringify(data))
   let result = await fetch(`${hmis.baseUrl}/api/events?orgUnitIdScheme=CODE`, {
     method: "POST",
     headers: {

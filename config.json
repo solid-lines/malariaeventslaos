@@ -26,14 +26,6 @@
             "Pv": "true",
             "Mixed": "true"
         },
-        "iboStpxyG6j": {
-            "ACT 6x1": "Treated",
-            "ACT 6x2": "Treated",
-            "ACT 6x3": "Treated",
-            "ACT 6x4": "Treated",
-            "Combined blister": "Treated",
-            "Referred ACT stockout": "Refer"
-        },
         "R5asQPlBybE": {
             "ACT 6x1": "true",
             "ACT 6x2": "true",
@@ -94,9 +86,6 @@
                 "mapping": "njwrUHsT0yg",
                 "optionSet": "cAtdZHwrH2M"
             }, {
-                "mapping": "iboStpxyG6j",
-                "value": "iboStpxyG6j"
-            }, {
                 "mapping": "R5asQPlBybE",
                 "value": "R5asQPlBybE"
             }
@@ -106,6 +95,9 @@
     "customValues": [{
             "deId": "RtfqjYAlhsa",
             "value": "true"
+        }, {
+            "deId": "iboStpxyG6j"
         }
     ]
+
 }
