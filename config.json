@@ -1,120 +1,111 @@
 {
-  "psi": {
-    "baseUrl": "https://data.psi-mis.org",
-    "username": "xxxxxxxx",
-    "password": "xxxxxxxx",
-    "sinceDays": 90
-  },
-
-  "hmis": {
-    "baseUrl": "https://hmis.gov.la",
-    "username": "xxxxxxxx",
-    "password": "xxxxxxxxx"
-  },
-
-  "program": {
-    "RjBwXyc5I66": "VTiOn7wKC4Q"
-  },
-
-  "programStage": {
-    "aRUlSh6oMSX": "HVOPHnaZngk"
-  },
-
-  "values": {
-    "ea2b8AQtC4O": {
-      "Pf": "true",
-      "Pv": "true",
-      "Mixed": "true"
+    "psi": {
+        "baseUrl": "https://data.psi-mis.org",
+        "username": "xxxxxxxx",
+        "password": "xxxxxxxx",
+        "sinceDays": 90
     },
-    "iboStpxyG6j": {
-      "ACT 6x1": "Treated",
-      "ACT 6x2": "Treated",
-      "ACT 6x3": "Treated",
-      "ACT 6x4": "Treated",
-      "Combined blister": "Treated",
-      "Referred ACT stockout": "Refer"
-    },
-    "R5asQPlBybE": {
-      "ACT 6x1": "true",
-      "ACT 6x2": "true",
-      "ACT 6x3": "true",
-      "ACT 6x4": "true",
-      "Combined blister": "true"
-    }
-  },
 
-  "optionSets": {
-    "ZpV2Hs9EGnC": {
-      "Male": "M",
-      "Female": "F"
+    "hmis": {
+        "baseUrl": "https://hmis.gov.la",
+        "username": "xxxxxxxx",
+        "password": "xxxxxxxxx"
     },
-    "ea2b8AQtC4O": {
-      "Pf": "P.F",
-      "Pv": "P.V",
-      "Mixed": "Mix",
-      "Negative": "Negative (-)"
-    },
-    "cAtdZHwrH2M": {
-      "ACT 6x1": "ACT 6x1",
-      "ACT 6x2": "ACT 6x2",
-      "ACT 6x3": "ACT 6x3",
-      "ACT 6x4": "ACT 6x4",
-      "Combined blister": "ACT 6x4"
-    },
-    "RNuFZKhQJVF": {
-      "PQ7.5": "1",
-      "PQ15": "1"
-    }
-  },
 
-  "deMapping": {
-    "qQngeCbT4uI": [
-      {
-        "mapping": "zDPvXY6h4JN"
-      }
-    ],
-    "lNcuFJPKhp9": [
-      {
-        "mapping": "CC9BpgSQbfh",
-        "optionSet": "ZpV2Hs9EGnC"
-      }
-    ],
-    "SILdmAJi1gg": [
-      {
-	"mapping":"N2l2WBzG22o",
-	"optionSet":"RNuFZKhQJVF"
-      }
-    ],
-    "FPNbkUi9D55": [
-      {
-        "mapping": "VstbDPVvaQZ",
-        "optionSet": "ea2b8AQtC4O"
-      },
-      {
-        "mapping": "jU51HPBjfQL",
-        "value": "ea2b8AQtC4O"
-      }
-    ],
-    "TzL693oH3D9": [
-      {
-        "mapping": "njwrUHsT0yg",
-        "optionSet": "cAtdZHwrH2M"
-      },
-      {
-        "mapping": "iboStpxyG6j",
-        "value": "iboStpxyG6j"
-      },
-      {
-        "mapping": "R5asQPlBybE",
-        "value": "R5asQPlBybE"
-      }
+    "program": {
+        "RjBwXyc5I66": "VTiOn7wKC4Q"
+    },
+
+    "programStage": {
+        "aRUlSh6oMSX": "HVOPHnaZngk"
+    },
+
+    "values": {
+        "ea2b8AQtC4O": {
+            "Pf": "true",
+            "Pv": "true",
+            "Mixed": "true"
+        },
+        "iboStpxyG6j": {
+            "ACT 6x1": "Treated",
+            "ACT 6x2": "Treated",
+            "ACT 6x3": "Treated",
+            "ACT 6x4": "Treated",
+            "Combined blister": "Treated",
+            "Referred ACT stockout": "Refer"
+        },
+        "R5asQPlBybE": {
+            "ACT 6x1": "true",
+            "ACT 6x2": "true",
+            "ACT 6x3": "true",
+            "ACT 6x4": "true",
+            "Combined blister": "true"
+        }
+    },
+
+    "optionSets": {
+        "ZpV2Hs9EGnC": {
+            "Male": "M",
+            "Female": "F"
+        },
+        "ea2b8AQtC4O": {
+            "Pf": "P.F",
+            "Pv": "P.V",
+            "Mixed": "Mix",
+            "Negative": "Negative (-)"
+        },
+        "cAtdZHwrH2M": {
+            "ACT 6x1": "ACT 6x1",
+            "ACT 6x2": "ACT 6x2",
+            "ACT 6x3": "ACT 6x3",
+            "ACT 6x4": "ACT 6x4",
+            "Combined blister": "ACT 6x4"
+        },
+        "RNuFZKhQJVF": {
+            "PQ7.5": "1",
+            "PQ15": "1"
+        }
+    },
+
+    "deMapping": {
+        "qQngeCbT4uI": [{
+                "mapping": "zDPvXY6h4JN"
+            }
+        ],
+        "lNcuFJPKhp9": [{
+                "mapping": "CC9BpgSQbfh",
+                "optionSet": "ZpV2Hs9EGnC"
+            }
+        ],
+        "SILdmAJi1gg": [{
+                "mapping": "N2l2WBzG22o",
+                "optionSet": "RNuFZKhQJVF"
+            }
+        ],
+        "FPNbkUi9D55": [{
+                "mapping": "VstbDPVvaQZ",
+                "optionSet": "ea2b8AQtC4O"
+            }, {
+                "mapping": "jU51HPBjfQL",
+                "value": "ea2b8AQtC4O"
+            }
+        ],
+        "TzL693oH3D9": [{
+                "mapping": "njwrUHsT0yg",
+                "optionSet": "cAtdZHwrH2M"
+            }, {
+                "mapping": "iboStpxyG6j",
+                "value": "iboStpxyG6j"
+            }, {
+                "mapping": "R5asQPlBybE",
+                "value": "R5asQPlBybE"
+            }
+        ]
+    },
+
+    "customValues": [{
+            "deId": "RtfqjYAlhsa",
+            "value": "true"
+        }
     ]
-  },
-
-  "customValues": [
-    {
-      "deId": "RtfqjYAlhsa",
-      "value": "true"
-    }
-  ]
 }
