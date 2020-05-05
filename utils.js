@@ -63,7 +63,7 @@ const getEvents = async (startDate, endDate) => {
 
 const filterStatus = (data, status) => {
   return data.events.filter(x =>
-    x.dataValues.find(y => y.value == `${status}`)
+    x.dataValues.find(y => status.includes(y.value))
   );
 };
 

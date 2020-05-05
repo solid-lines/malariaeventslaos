@@ -19,7 +19,7 @@ const moment = require("moment");
 
   let data = await getEvents(startDate, endDate);
   let orgs = await getOrgs();
-  let pendingData = filterStatus(data, "Pendding"); //Pendding
+  let pendingData = filterStatus(data, ["Rejected", "Pendding"]); //Pendding
   let pushD = transform(pendingData, orgs);
   let response = await pushData(pushD);
   updateStatus(response, pendingData);
