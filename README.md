@@ -41,3 +41,9 @@ deMapping{
 
 Treatment origin TzL693oH3D9 (not compulsory)
 Treatment result origin QRbMgIHc9QB (not compulsory). Uses optionSet mdE8zrlVRVf
+
+How to run
+----------
+
+1) update config.json file
+2) run 'node index.js'
