@@ -7,7 +7,7 @@
     },
 
     "hmis": {
-        "baseUrl": "https://hmis.gov.la",
+        "baseUrl": "https://hmis.gov.la/hmis",
         "username": "xxxxxxxx",
         "password": "xxxxxxxxx"
     },
