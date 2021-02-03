@@ -1,5 +1,7 @@
 const fetch = require("node-fetch");
 const moment = require("moment");
+var fs = require('fs');
+var util = require('util');
 
 const { psi, hmis } = require("./config.json");
 
@@ -11,6 +13,18 @@ const {
   programStage,
   program
 } = require("./config.json");
+
+// Logger
+var logFile = fs.createWriteStream("./malariaeventlaos.log", { flags: 'a' });
+// Or 'w' to truncate the file every time the process starts.
+var logStdout = process.stdout;
+
+console.log = function () {
+    logFile.write(util.format.apply(null, arguments) + '\n');
+    logStdout.write(util.format.apply(null, arguments) + '\n');
+}
+console.error = console.log;
+console.info = console.log;
 
 const createAuthenticationHeader = (username, password) => {
   return "Basic " + new Buffer(username + ":" + password).toString("base64");
@@ -43,6 +57,7 @@ const getOrgs = async () => {
 };
 
 const getEvents = async (startDate, endDate) => {
+  console.log("getEvents");
   let result = await fetch(
     `${
       psi.baseUrl
@@ -62,12 +77,15 @@ const getEvents = async (startDate, endDate) => {
 };
 
 const filterStatus = (data, status) => {
+  console.log("filterStatus");
   return data.events.filter(x =>
     x.dataValues.find(y => status.includes(y.value))
   );
 };
 
 const transform = (cases, orgs) => {
+  console.log("transform");
+  console.log(JSON.stringify(cases));
   let payload = {
     events: []
   };
@@ -195,7 +213,11 @@ const transform = (cases, orgs) => {
 };
 
 const updateStatus = async (res, data) => {
+  console.log("STEP: updateStatus");
+  console.log("response");
   console.log(JSON.stringify(res));
+  console.log("original event");
+  console.log(JSON.stringify(data));
   let payload = {
     events: []
   };
@@ -229,6 +251,8 @@ const updateStatus = async (res, data) => {
     }
     payload.events.push(event);
   });
+  console.log("updated payload");
+  console.log(JSON.stringify(payload));
   await fetch(psi.baseUrl + "/api/events", {
     method: "POST",
     headers: {
@@ -241,14 +265,17 @@ const updateStatus = async (res, data) => {
       return res.json();
     })
     .then(json => {
+      console.log(JSON.stringify(json));
       console.log("Update status done!!");
     });
 };
 
 const pushData = async data => {
+  const url = `${hmis.baseUrl}/api/events?orgUnitIdScheme=CODE`
   console.log("Sending data")
+  console.log(url)
   console.log(JSON.stringify(data))
-  let result = await fetch(`${hmis.baseUrl}/api/events?orgUnitIdScheme=CODE`, {
+  let result = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
