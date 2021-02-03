@@ -118,6 +118,9 @@ const transform = (cases, orgs) => {
         latitude: coordinates[1],
         longitude: coordinates[0]
       };
+    } else {
+      // value needed (dhis2 2.35)
+      event['geometry'] = null
     }
 
     // Mapping data elements
