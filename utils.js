@@ -34,7 +34,7 @@ const getOrgs = async () => {
   let result = await fetch(
     `${
       psi.baseUrl
-    }/api/programs/RjBwXyc5I66.json?fields=organisationUnits[id,name,level,displayName,attributeValues,coordinates]&paging=false`,
+    }/api/programs/RjBwXyc5I66.json?fields=organisationUnits[id,name,level,displayName,attributeValues,geometry]&paging=false`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -101,6 +101,8 @@ const transform = (cases, orgs) => {
         districtCodePPM = attr.value;
       }
     }
+    console.log("orgsCode")
+    console.log(orgsCode)
 
     let event = {
       event: c["event"],
@@ -112,14 +114,19 @@ const transform = (cases, orgs) => {
       dataValues: []
     };
 
-    if (orgsCode["coordinates"]) {
-      var coordinates = JSON.parse(orgsCode["coordinates"]);
+    if (orgsCode["geometry"] && orgsCode["geometry"]["type"] == "Point") {
+      const latitude = orgsCode["geometry"]["coordinates"][1]
+      const longitude = orgsCode["geometry"]["coordinates"][0]
       event['coordinate'] = {
-        latitude: coordinates[1],
-        longitude: coordinates[0]
+        latitude: latitude,
+        longitude: longitude
       };
+      event['geometry'] ={
+          type: "Point",
+          coordinates: [longitude, latitude]
+      }
     } else {
-      // value needed (dhis2 2.35)
+      // There is a value needed for geometry (dhis2 2.35)
       event['geometry'] = null
     }
 
