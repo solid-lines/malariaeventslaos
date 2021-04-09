@@ -217,6 +217,7 @@ const transform = (cases, orgs) => {
         dataElement: "hjSIBxruyJA", // origin_de_uid: LA - Sync error message https://data.psi-mis.org/api/dataElements/hjSIBxruyJA
         value: "District Code PPM doesn't exist"
       });
+      console.error("Event "+c['event']+" with orgUnit ("+c['orgUnit']+") with District Code PPM");
     }
   });
   return payload;
