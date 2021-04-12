@@ -1,6 +1,16 @@
 # malariaeventslaos
 Script to move Malaria events between PSI Laos and MoH
 
+#missing District PPM Code
+- Laos is divided into Provinces -> Districts.
+- Inside Districts, there are the PPM (Publi/Private Clinics).
+- Some PPM (that are included in a org. unit group) are the ones that made the Malaria tests.
+- The Lao MoH dhis2 server has NOT PPMs, BUT it has the same Provinces and Districts than PSI dhis2 instance
+- For all districts a generic PPM org unit was created with this code: {District Name}_{Province Code}_PPM. 
+- That implies that all PSI PPMs that reports malaria cases inside a district are mapped against the same Org Unit of the MoH.
+- In PSI dhis2 instance, the Custom Attribute DistrictCodePPM MUST be filled in each Org Unit that report malaria cases. And the code MUST be the Lao MoH code generated {District Name}_{Province Code}_PPM
+
+
 #config.json file
 
 https://hmis.gov.la/api/programStages/HVOPHnaZngk?fields=*,!organisationUnits,!programIndicators,programStageDataElements[*,dataElement[*]]
