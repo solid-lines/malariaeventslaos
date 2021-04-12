@@ -94,9 +94,7 @@ const transform = (cases, orgs) => {
     let orgsCode = orgs.organisationUnits.find(x => x.id == c["orgUnit"]);
     let districtCodePPM = null;
     if (orgsCode != null) {
-      let attr = orgsCode.attributeValues.find(
-        y => y.attribute.id == "gSL5sQyjxfP"
-      );
+      let attr = orgsCode.attributeValues.find(y => y.attribute.id == "gSL5sQyjxfP");
       if (attr != null) {
         districtCodePPM = attr.value;
       }
