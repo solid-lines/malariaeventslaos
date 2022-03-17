@@ -1,3 +1,7 @@
 /node_modules/
 /config_secure.json
 *.log
+*-payload.json
+*-response.json
+*-update-request.json
+*-update-response.json
