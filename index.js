@@ -1,6 +1,6 @@
-const jsonfile = require("jsonfile");
 const { sinceDays } = require("./config.json").psi;
 const {
+  saveFile,
   getOrgs,
   getEvents,
   transform,
@@ -21,6 +21,8 @@ const moment = require("moment");
   let orgs = await getOrgs();
   let pendingData = filterStatus(data, ["Rejected", "Pendding"]); //Pendding
   let pushD = transform(pendingData, orgs);
+  saveFile(pushD, "payload")
   let response = await pushData(pushD);
+  saveFile(response, "response")
   updateStatus(response, pendingData);
 })();

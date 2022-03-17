@@ -26,6 +26,13 @@ console.log = function () {
 console.error = console.log;
 console.info = console.log;
 
+function saveFile(json_content, file_suffix){
+  const data = JSON.stringify(json_content, null, 4);
+  const date_str = new Date().toISOString().replace(/T/, '_').replace(/\..+/, '').replace(':','_').replace(':','_')
+  const filename = date_str + '-'+file_suffix+'.json'
+  fs.writeFileSync(filename, data); 
+}
+
 const createAuthenticationHeader = (username, password) => {
   return "Basic " + new Buffer(username + ":" + password).toString("base64");
 };
@@ -262,6 +269,7 @@ const updateStatus = async (res, data) => {
   });
   console.log("updated payload");
   console.log(JSON.stringify(payload));
+  saveFile(payload, "update-request")
   await fetch(psi.baseUrl + "/api/events", {
     method: "POST",
     headers: {
@@ -275,6 +283,7 @@ const updateStatus = async (res, data) => {
     })
     .then(json => {
       console.log(JSON.stringify(json));
+      saveFile(json, "update-response")
       console.log("Update status done!!");
     });
 };
@@ -300,6 +309,7 @@ const pushData = async data => {
 };
 
 module.exports = {
+  saveFile,
   getOrgs,
   getEvents,
   transform,
