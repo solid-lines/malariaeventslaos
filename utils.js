@@ -61,7 +61,7 @@ const getEvents = async (startDate, endDate) => {
   let result = await fetch(
     `${
       psi.baseUrl
-    }/api/events.json?program=RjBwXyc5I66&startDate=${startDate}&endDate=${endDate}&skipPaging=true`,
+    }/api/events.json?program=RjBwXyc5I66&startDate=${startDate}&endDate=${endDate}&skipPaging=true&fields=*`,
     {
       headers: {
         "Content-Type": "application/json",
